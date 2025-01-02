@@ -1,0 +1,83 @@
+// Prisma schema file
+
+// ************  Configuracion de la conexion a la base de datos   ***************
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+
+//*******************     TABLAS      **********************
+
+
+//Tabla Clientes
+model Cliente {
+  //Fields
+  id Int @id @default(autoincrement())
+  empresa String ?
+  nombre String
+  precio_transporte Int
+  telefono String @unique
+  email String @unique
+  descuento Int ? @default(0)
+  comunicaciones Boolean @default(true)
+  created DateTime @default(now())
+  //Relations
+      //Producto
+        productos Producto[]
+      //Idioma
+        idioma Idioma @relation(fields: [idiomaId], references: [id])
+        idiomaId Int
+        
+
+}
+
+//Tabla Productos
+
+enum Unidad {
+  kilo
+  bulto
+  pieza
+}
+model Producto {
+  //Fields
+  id Int @id @default(autoincrement())
+  nombre String @unique
+  precio_palet Float
+  precio Float
+  foto String ?
+  unidad_venta Unidad
+  Created DateTime @default(now())
+  //Relations
+      //Usuario
+        clientes Cliente[]
+}
+//Tabla Idiomas
+model Idioma {
+  //Fields
+  id Int @id @default(autoincrement())
+  nombre String @unique
+  //Relations
+      //Mensaje
+        mensaje Mensaje ?
+      //Usuario
+        clientes Cliente[] 
+        
+}
+//Tabla Mensajes
+model Mensaje {
+  //Fields
+  id Int @id @default(autoincrement())
+  prenombre String
+  contenido String
+  //Relations
+      //Idioma
+        idioma Idioma @relation(fields:[idiomaId], references: [id])
+        idiomaId Int @unique
+}

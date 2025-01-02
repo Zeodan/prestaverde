@@ -1,0 +1,36 @@
+{
+  "name": "pv_sc_rxui",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@ag-grid-community/locale": "^32.1.0",
+    "@nextui-org/react": "^2.4.6",
+    "@nextui-org/system": "^2.2.5",
+    "@nextui-org/theme": "^2.2.9",
+    "@prisma/client": "^5.20.0",
+    "ag-grid-react": "^32.1.0",
+    "framer-motion": "^11.3.24",
+    "next": "14.2.5",
+    "next-cloudinary": "^6.16.0",
+    "nodemailer": "^6.9.16",
+    "react": "^18",
+    "react-data-table-component": "^7.6.2",
+    "react-dom": "^18",
+    "react-hook-form": "^7.52.2",
+    "react-icons": "^5.2.1",
+    "react-toastify": "^11.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
+    "postcss": "^8",
+    "prisma": "^5.20.0",
+    "tailwindcss": "^3.4.1"
+  }
+}
